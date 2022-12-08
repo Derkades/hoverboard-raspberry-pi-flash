@@ -65,6 +65,8 @@ platform_packages = maxgerhardt/framework-spl@2.10301.0, toolchain-gccarmnoneeab
 ## Step 4: Wiring
 Connect SWD io and clock to Raspberry PI pins 11 and 25. Not sure about the order, try one and if it doesn't work, swap. them. Also connect ground. Do not connect 3v3, this will overload the Raspberry Pi's power supply. Instead, you should connect the board to a battery or other 30-40V power supply.
 
+Keep the wires short! To avoid connection issues due to interference, I would recommend using wires no longer than 20 cm. Shorter is better.
+
 ## Step 5: Unlocking
 https://github.com/EFeru/hoverboard-firmware-hack-FOC/wiki/How-to-Unlock-MCU-Flash
 
