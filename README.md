@@ -29,7 +29,7 @@ sudo make install
 ### Emanuel Feru's FOC firmware
 
 
-The best firmware with many options and advanced motor control. Check if your board is supported: [your board is supported](https://github.com/EFeru/hoverboard-firmware-hack-FOC/wiki/Firmware-Compatibility).
+The best firmware with many options and advanced motor control. Check if your [your board is supported](https://github.com/EFeru/hoverboard-firmware-hack-FOC/wiki/Firmware-Compatibility).
 
 ```sh
 git clone https://github.com/EFeru/hoverboard-firmware-hack-FOC
@@ -38,10 +38,11 @@ sudo apt install gcc-arm-none-eabi
 make
 ```
 
-### Florian's gen2 firmware
+### Firmware for dual sideboards
 
+Alternative firmware, for dual sideboard models (GD32). No field-oriented control (FOC) and way fewer features. https://github.com/RoboDurden/Hoverboard-Firmware-Hack-Gen2.x
 
-Alternative firmware, for dual sideboard models (GD32). No field-oriented control (FOC) and way fewer features. Maximilian has a fork with PlatformIO build support (instead of the proprietary Keil development environment).
+My fork with PlatformIO support: https://github.com/Derkades/Hoverboard-Firmware-Hack-Gen2.x
 
 Install [PlatformIO Core (CLI)](https://docs.platformio.org/en/stable/core/index.html). They provide an easy installation script that installs PlatformIO in a virtual environment. Run the following command as a regular user:
 
@@ -52,8 +53,9 @@ python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio
 `pio` is now installed to `~/.platformio/penv/bin/pio`
 
 ```sh
-git clone https://github.com/maxgerhardt/Hoverboard-Firmware-Hack-Gen2
+git clone https://github.com/Derkades/Hoverboard-Firmware-Hack-Gen2.x
 cd Hoverboard-Firmware-Hack-Gen2/HoverBoardGigaDevice
+# modify Inc/config.h first!
 ~/.platformio/penv/bin/pio run
 ```
 
@@ -113,9 +115,9 @@ Example for EFeru firmware:
 openocd -f /usr/local/share/openocd/scripts/interface/sysfsgpio-raspberrypi.cfg -c "transport select swd" -f /usr/local/share/openocd/scripts/target/stm32f1x.cfg -c "program build/hover.bin verify reset exit 0x08000000"
 ```
 
-Example for Florian firmware, PlatformIO:
+Example for sideboards firmware with PlatformIO:
 ```
-openocd -f /usr/local/share/openocd/scripts/interface/sysfsgpio-raspberrypi.cfg -c "transport select swd" -f /usr/local/share/openocd/scripts/target/stm32f1x.cfg -c "program .pio/build/GD32F130C8T6/firmware.bin verify reset exit 0x08000000"
+openocd -f /usr/local/share/openocd/scripts/interface/sysfsgpio-raspberrypi.cfg -c "transport select swd" -f /usr/local/share/openocd/scripts/target/stm32f1x.cfg -c "program .pio/build/GD32F130C8/firmware.bin verify reset exit 0x08000000"
 ```
 
 Example output:
